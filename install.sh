@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
-cp -f configuration.nix /etc/nixos/configuration.nix
-cp -f hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+FLAVOR=$1
+if [ -z "$FLAVOR" ]; then
+    echo "Usage: $0 <flavor>"
+    exit 1
+fi
+
+cp -f $FLAVOR/configuration.nix /etc/nixos/configuration.nix
+cp -f $FLAVOR/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
