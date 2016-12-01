@@ -27,7 +27,7 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ { device = "/dev/xps-vg/swap";  } ];
 
   nix.maxJobs = lib.mkDefault 4;
 }
