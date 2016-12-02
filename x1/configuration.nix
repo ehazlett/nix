@@ -102,4 +102,8 @@
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.09";
 
+  security.sudo.extraConfig =
+    ''
+    hatter * = (root) NOPASSWD: /usr/local/bin/screen-backlight, /usr/local/bin/keyboard-backlight, /usr/local/bin/keyboard-i3-switch, /run/current-system/sw/bin/wpa_supplicant, /run/current-system/sw/bin/pkill, /run/current-system/sw/bin/tee, /run/current-system/sw/bin/chvt, /usr/local/bin/runc, /usr/local/bin/containerd, /usr/local/bin/ocitools, /run/current-system/sw/bin/qemu-img, /run/current-system/sw/bin/qemu-system-x86_64
+    '';
 }
