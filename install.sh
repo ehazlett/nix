@@ -5,5 +5,6 @@ if [ -z "$FLAVOR" ]; then
     exit 1
 fi
 
+cp -r common.nix /etc/nixos/common.nix
 cp -f $FLAVOR/configuration.nix /etc/nixos/configuration.nix
 cp -f $FLAVOR/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
