@@ -50,6 +50,7 @@
     pkgs.gtk-engine-murrine
   ];
   environment.sessionVariables.TERMINAL = "xfce4-terminal";
+  environment.sessionVariables.GPG_TTY = "tty";
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
