@@ -17,13 +17,13 @@
   ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/eca1415e-8199-44aa-96fd-87dd5b83499b";
+    { device = "/dev/x1-vg/root";
       fsType = "ext4";
       options = [ "noatime" "nodiratime" "discard" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/AA99-30F7";
+    { device = "/dev/sda1";
       fsType = "vfat";
     };
 
