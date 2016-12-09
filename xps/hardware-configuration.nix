@@ -17,13 +17,13 @@
   ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/0723a991-dfd2-4c3f-80f4-f970630d96b3";
+    { device = "/dev/xps-vg/root";
       fsType = "ext4";
       options = [ "noatime" "nodiratime" "discard" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8970-A487";
+    { device = "/dev/nvme0n1p1";
       fsType = "vfat";
     };
 

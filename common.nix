@@ -30,10 +30,13 @@
     i3lock
     i3status
     bashCompletion
+    inconsolata
     slim
+    feh
     vde2
     qemu
     dmenu
+    lxappearance
     vim
     cryptsetup
     wpa_supplicant
@@ -46,11 +49,14 @@
     pkgs.xfce.terminal
     pkgs.xfce.xfce4settings
     pkgs.xfce.xfwm4
+    pkgs.xorg.xset
+    pkgs.xorg.xrandr
+    pkgs.xorg.xmodmap
     pkgs.gnome3.adwaita-icon-theme
     pkgs.gtk-engine-murrine
   ];
   environment.sessionVariables.TERMINAL = "xfce4-terminal";
-  environment.sessionVariables.GPG_TTY = "tty";
+  environment.sessionVariables.GDK_SCALE = "2";
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -95,4 +101,22 @@
     ''
     hatter * = (root) NOPASSWD: /usr/local/bin/screen-backlight, /usr/local/bin/keyboard-backlight, /usr/local/bin/keyboard-i3-switch, /run/current-system/sw/bin/wpa_supplicant, /run/current-system/sw/bin/pkill, /run/current-system/sw/bin/tee, /run/current-system/sw/bin/chvt, /usr/local/bin/runc, /usr/local/bin/containerd, /usr/local/bin/ocitools, /run/current-system/sw/bin/qemu-img, /run/current-system/sw/bin/qemu-system-x86_64
     '';
+
+  environment.shellInit = ''
+      # Set GTK_PATH so that GTK+ can find the Xfce theme engine.
+      export GTK_PATH=${pkgs.xfce.gtk_xfce_engine}/lib/gtk-2.0
+
+      # Set GTK_DATA_PREFIX so that GTK+ can find the Xfce themes.
+      export GTK_DATA_PREFIX=${config.system.path}
+      xfsettingsd &
+      # ===================================
+  '';
+
+  environment.pathsToLink = [
+      "/share/xfce4"
+      "/share/themes"
+      "/share/mime"
+      "/share/desktop-directories"
+  ];
+
 }
