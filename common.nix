@@ -48,6 +48,7 @@
     gnupg1compat
     dmenu
     blueman
+    bash-completion
     pkgs._9pfs
     pkgs.bridge-utils
     pkgs.xfce.terminal
