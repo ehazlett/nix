@@ -41,6 +41,7 @@
     lxappearance
     vim
     cryptsetup
+    tmux
     wpa_supplicant
     networkmanager
     tunctl
