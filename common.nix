@@ -10,6 +10,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   # Select internationalisation properties.
   i18n = {
     consoleKeyMap = "us";
@@ -44,6 +46,8 @@
     tunctl
     greybird
     gnupg1compat
+    dmenu
+    blueman
     pkgs._9pfs
     pkgs.bridge-utils
     pkgs.xfce.terminal
@@ -56,7 +60,7 @@
     pkgs.gtk-engine-murrine
   ];
   environment.sessionVariables.TERMINAL = "xfce4-terminal";
-  environment.sessionVariables.GDK_SCALE = "2";
+  environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -68,7 +72,6 @@
   services.xserver.enable = true;
   services.xserver.layout = "us";
   services.xserver.xkbOptions = "ctrl:nocaps";
-  services.xserver.windowManager.i3.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.synaptics.enable = true;
   services.xserver.synaptics.twoFingerScroll = true;
